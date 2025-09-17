@@ -1,7 +1,10 @@
+// Constantes
+
 const nombre_restaurante = "El Mexican"
 const nombres_menu = ["tacos", "quesadillas", "burritos", "enchiladas"]
 const precios_menu = [20000, 18000, 20000, 25000]
 
+// Variables
 let pedido_nombres = []
 let pedido_precios = []
 let totalPagar = 0
