@@ -1,2 +1,2 @@
 # Proyecto_Final
-Va a contener todas las pre-entregas del proyecto final
+Contiene todas las pre-entregas del proyecto final en este caso la primera
