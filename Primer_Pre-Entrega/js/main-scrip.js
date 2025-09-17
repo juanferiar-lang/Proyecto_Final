@@ -55,7 +55,7 @@ function mostrarPedidoActual(arrayPedido_nombres, total) {
     }
 }
 
-// ----- Main Code  -----
+// ----- --------------------------- Codigo principal ---------------------------- //
 let continuar = true
 do {
     let menuTexto = "Bienvenido a " + nombre_restaurante+ "\n\nMenú del Día:\n" 
@@ -73,13 +73,17 @@ do {
             continuar = false
             break
         case "eliminar":
-            const productoAeliminar = prompt("¿Qué producto deseas eliminar? "+ pedido_nombres.join(", "))
-            let validacion_eliminar = eliminarProducto(productoAeliminar.toLowerCase());
-            if (validacion_eliminar) {
-                alert("Has eliminado " + productoAeliminar + ". Total actual: $" + totalPagar)
-                console.log("Producto eliminado: " + productoAeliminar)
-            } else {
-                alert(productoAeliminar + " no se encontró en tu pedido.")
+            if (pedido_nombres.length > 0) {
+                const productoAeliminar = prompt("¿Qué producto deseas eliminar? "+ pedido_nombres.join(", "))
+                let validacion_eliminar = eliminarProducto(productoAeliminar.toLowerCase());
+                if (validacion_eliminar) {
+                    alert("Has eliminado " + productoAeliminar + ". Total actual: $" + totalPagar)
+                    console.log("Producto eliminado: " + productoAeliminar)
+                } else {
+                    alert(productoAeliminar + " no se encontró en tu pedido.")
+                }
+            }else {
+                alert("No hay ningun producto en el pedido hasta el momento")
             }
             break
         case "pedido":
