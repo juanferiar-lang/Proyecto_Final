@@ -1,10 +1,18 @@
 // CONSTANTES
 const nombre_restaurante = "El Mexican"
+class producto{
+    static id = 0
+    constructor (nombre, precio){
+        this.id = ++producto.id
+        this.nombre = nombre
+        this.precio = precio
+    }
+}
 const menu = [
-    { nombre: "tacos", precio: 20000 },
-    { nombre: "quesadillas", precio: 18000 },
-    { nombre: "burritos", precio: 20000 },
-    { nombre: "enchiladas", precio: 25000 }
+    new producto ("tacos", 20000),
+    new producto ("quesadillas", 18000),
+    new producto ("burritos", 20000),
+    new producto ("enchiladas", 25000)
 ]
 
 // VARIABLES
@@ -73,8 +81,9 @@ function eliminar(){
 }
 
 function agregar(opcion) {
-    if (opcion > 0 && opcion <= menu.length) {
-        agregarProducto(menu[opcion - 1])
+    const producto = menu.find(p => p.id === opcion)
+    if (producto){
+        agregarProducto(producto)
     } else {
         alert("Opción no válida. Por favor, elige un número del menú.")
     }
@@ -82,10 +91,8 @@ function agregar(opcion) {
 
 function mostrarMenu(){
     let menuTexto = "Bienvenido a " + nombre_restaurante + "\n\nMenú del Día:\n"
-    let contador = 1
     for(let producto of menu){
-        menuTexto += contador +". " + producto.nombre + " ( $" + producto.precio+ " )\n"
-        contador++
+        menuTexto += producto.id + ". " + producto.nombre + " ( $" + producto.precio+ " )\n"
     }
     menuTexto += "\nEscribe un número del menú o " + "\n" +
         "'eliminar' para quitar un producto " + "\n" +
