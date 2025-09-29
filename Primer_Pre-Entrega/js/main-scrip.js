@@ -1,44 +1,43 @@
 // CONSTANTES
 const nombre_restaurante = "El Mexican"
-const nombres_menu = ["tacos", "quesadillas", "burritos", "enchiladas"]
-const precios_menu = [20000, 18000, 20000, 25000]
+const menu = [
+    { nombre: "tacos", precio: 20000 },
+    { nombre: "quesadillas", precio: 18000 },
+    { nombre: "burritos", precio: 20000 },
+    { nombre: "enchiladas", precio: 25000 }
+]
 
 // VARIABLES
-let pedido_nombres = []
-let pedido_precios = []
+let pedido = []
 let totalPagar = 0
 
 // FUNCIONES
-function agregarProducto(nombre, precio) {
-    pedido_nombres.push(nombre)
-    pedido_precios.push(precio)
-    totalPagar += precio
-    alert("Has agregado " + nombre+ " a tu pedido. Total actual: $" + totalPagar)
-    console.log("Producto agregado: "+ nombre)
+function agregarProducto(producto) {
+    pedido.push(producto)
+    totalPagar += producto.precio
+    alert("Has agregado " + producto.nombre + " a tu pedido. Total actual: $" + totalPagar)
+    console.log("Producto agregado: " + producto.nombre)
 }
 
-function eliminarProducto(nombre){
-    const producto = nombre.toLowerCase()
-    const index_producto = pedido_nombres.indexOf(producto)
-    const productoEliminado = pedido_nombres.find(pedido => pedido === producto)
-    if (productoEliminado){
-        pedido_nombres.splice(index_producto,1)
-        const precio_eliminado = pedido_precios.splice(index_producto,1)[0]
-        totalPagar -= precio_eliminado
+function eliminarProducto(nombre) {
+    const index = pedido.findIndex(p => p.nombre.toLowerCase() === nombre.toLowerCase())
+    if (index !== -1) {
+        const productoEliminado = pedido.splice(index, 1)[0]
+        totalPagar -= productoEliminado.precio
         return true
-    } 
+    }
     return false
 }
 
-function manejarConfirmacion(arrayPedido, total) {
-    if (arrayPedido.length > 0) {
+function manejarConfirmacion(pedido, total) {
+    if (pedido.length > 0) {
         let confirmacion = confirm(
-            "Tu pedido es: " + arrayPedido.join(", ") + "\n" +
+            "Tu pedido es: " + pedido.map(p => p.nombre).join(", ") + "\n" +
             "El total a pagar es: $" + total + "\n" +
             "¿Deseas confirmar tu compra?"
         )
         if (confirmacion) {
-            alert("Gracias por tu compra. Tu pedido está en camino. ")
+            alert("Gracias por tu compra. Tu pedido está en camino.")
             console.log("Pedido finalizado con éxito.")
         } else {
             alert("Compra cancelada. Esperamos verte pronto")
@@ -49,58 +48,71 @@ function manejarConfirmacion(arrayPedido, total) {
     }
 }
 
-function mostrarPedidoActual(arrayPedido_nombres, total) {
-    if (arrayPedido_nombres.length > 0) {
-        alert("Tu pedido es: " + pedido_nombres.join(", ") + "\n" +
-        "El total a pagar es: $" + total + "\n" )
+function mostrarPedidoActual(pedido, total) {
+    if (pedido.length > 0) {
+        alert("Tu pedido es: " + pedido.map(p => p.nombre).join(", ") + "\n" +
+            "El total a pagar es: $" + total + "\n")
     } else {
         alert("No se realizó ningún pedido hasta el momento")
     }
 }
 
+function eliminar(){
+    if (pedido.length > 0) {
+        const productoAeliminar = prompt("¿Qué producto deseas eliminar? " + "( " + pedido.map(p => p.nombre).join(", ") + " ) ")
+        let validacion_eliminar = eliminarProducto(productoAeliminar)
+        if (validacion_eliminar) {
+            alert("Has eliminado " + productoAeliminar + ". Total actual: $" + totalPagar)
+            console.log("Producto eliminado: " + productoAeliminar)
+        } else {
+            alert(productoAeliminar + " no se encontró en tu pedido.")
+        }
+    } else {
+        alert("No hay ningún producto en el pedido hasta el momento")
+    }
+}
+
+function agregar(opcion) {
+    if (opcion > 0 && opcion <= menu.length) {
+        agregarProducto(menu[opcion - 1])
+    } else {
+        alert("Opción no válida. Por favor, elige un número del menú.")
+    }
+}
+
+function mostrarMenu(){
+    let menuTexto = "Bienvenido a " + nombre_restaurante + "\n\nMenú del Día:\n"
+    let contador = 1
+    for(let producto of menu){
+        menuTexto += contador +". " + producto.nombre + " ( $" + producto.precio+ " )\n"
+        contador++
+    }
+    menuTexto += "\nEscribe un número del menú o " + "\n" +
+        "'eliminar' para quitar un producto " + "\n" +
+        "'pedido' para ver tu pedido" + "\n" +
+        "'salir' para terminar: "
+    return menuTexto
+}
 // ----- --------------------------- Codigo principal ---------------------------- //
 let continuar = true
 do {
-    let menuTexto = "Bienvenido a " + nombre_restaurante+ "\n\nMenú del Día:\n" 
-    for (let i = 0; i < nombres_menu.length; i++) {
-        menuTexto += (i + 1) + " " + nombres_menu[i] + "( " + precios_menu[i] +" )\n"      
-    }
-    menuTexto += "\nEscribe un número del menu o " + "\n" +
-                 "'eliminar' para quitar un producto " + "\n" +
-                 "'pedido' para ver tu pedido" + "\n" +
-                 "'salir' para terminar: "
-    
-    let eleccion = prompt(menuTexto);
-    switch(eleccion.toLowerCase()){
+    const panelMenu = mostrarMenu()
+    let eleccion = prompt(panelMenu)
+    switch (eleccion.toLowerCase()) {
         case "salir":
             continuar = false
             break
         case "eliminar":
-            if (pedido_nombres.length > 0) {
-                const productoAeliminar = prompt("¿Qué producto deseas eliminar? "+ pedido_nombres.join(", "))
-                let validacion_eliminar = eliminarProducto(productoAeliminar.toLowerCase());
-                if (validacion_eliminar) {
-                    alert("Has eliminado " + productoAeliminar + ". Total actual: $" + totalPagar)
-                    console.log("Producto eliminado: " + productoAeliminar)
-                } else {
-                    alert(productoAeliminar + " no se encontró en tu pedido.")
-                }
-            }else {
-                alert("No hay ningun producto en el pedido hasta el momento")
-            }
+            eliminar()
             break
         case "pedido":
-            mostrarPedidoActual(pedido_nombres, totalPagar)
+            mostrarPedidoActual(pedido, totalPagar)
             break
         default:
             let opcion = parseInt(eleccion)
-            if (opcion > 0 && opcion <= nombres_menu.length) {
-                agregarProducto(nombres_menu[opcion - 1], precios_menu[opcion - 1])
-            } else {
-                alert("Opción no válida. Por favor, elige un número del menú.")
-            }
+            agregar(opcion)
             break
     }
 } while (continuar)
 
-manejarConfirmacion(pedido_nombres, totalPagar)
+manejarConfirmacion(pedido, totalPagar)
