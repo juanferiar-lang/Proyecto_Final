@@ -16,21 +16,21 @@ const menu = [
         "tacos", 
         20000, 
         "Cuatro tortillas de maíz rellenas de frijol refrito y cubiertas con ingredientes frescos.",
-        "/Primer_Pre-Entrega/imagenes/tacos.jpg",
+        "/Pre-Entrega/imagenes/tacos.jpg",
         0
         ),
     new producto (
         "quesadillas", 
         18000,
         "Tortillas de maíz o harina dobladas y rellenas con abundante queso fundido.",
-        "/Primer_Pre-Entrega/imagenes/quesadillas.jpg",
+        "/Pre-Entrega/imagenes/quesadillas.jpg",
         0
         ),
     new producto (
         "burritos", 
         20000,
         "Gran tortilla de harina rellena con una combinación de arroz, frijoles y carne.",
-        "/Primer_Pre-Entrega/imagenes/burritos.jpg" ,
+        "/Pre-Entrega/imagenes/burritos.jpg" ,
         0
         ),
     new producto (
@@ -38,7 +38,7 @@ const menu = [
         25000,
         "Tortillas de maíz bañadas en una salsa de chile (roja o verde), rellenas de pollo o queso, " + 
         "y horneadas. Se sirven con crema, queso rallado y cebolla.",
-        "/Primer_Pre-Entrega/imagenes/enchiladas.jpg",
+        "/Pre-Entrega/imagenes/enchiladas.jpg",
         0
         ) 
 ]
