@@ -1,125 +1,94 @@
 // CONSTANTES
-const nombre_restaurante = "El Mexican"
+const nombre_restaurante = "El canton de Tijuana"
 class producto{
     static id = 0
-    constructor (nombre, precio){
+    constructor (nombre, precio, descripcion, imagen, cantidad){
         this.id = ++producto.id
         this.nombre = nombre
         this.precio = precio
+        this.descripcion = descripcion
+        this.imagen = imagen
+        this.cantidad = cantidad
     }
 }
 const menu = [
-    new producto ("tacos", 20000),
-    new producto ("quesadillas", 18000),
-    new producto ("burritos", 20000),
-    new producto ("enchiladas", 25000)
+    new producto (
+        "tacos", 
+        20000, 
+        "Cuatro tortillas de maíz rellenas de frijol refrito y cubiertas con ingredientes frescos.",
+        "/Primer_Pre-Entrega/imagenes/tacos.jpg",
+        0
+        ),
+    new producto (
+        "quesadillas", 
+        18000,
+        "Tortillas de maíz o harina dobladas y rellenas con abundante queso fundido.",
+        "/Primer_Pre-Entrega/imagenes/quesadillas.jpg",
+        0
+        ),
+    new producto (
+        "burritos", 
+        20000,
+        "Gran tortilla de harina rellena con una combinación de arroz, frijoles y carne.",
+        "/Primer_Pre-Entrega/imagenes/burritos.jpg" ,
+        0
+        ),
+    new producto (
+        "enchiladas", 
+        25000,
+        "Tortillas de maíz bañadas en una salsa de chile (roja o verde), rellenas de pollo o queso, " + 
+        "y horneadas. Se sirven con crema, queso rallado y cebolla.",
+        "/Primer_Pre-Entrega/imagenes/enchiladas.jpg",
+        0
+        ) 
 ]
 
-// VARIABLES
-let pedido = []
-let totalPagar = 0
 
 // FUNCIONES
-function agregarProducto(producto) {
-    pedido.push(producto)
-    totalPagar += producto.precio
-    alert("Has agregado " + producto.nombre + " a tu pedido. Total actual: $" + totalPagar)
-    console.log("Producto agregado: " + producto.nombre)
+
+let seccion_productos = document.getElementById("seccion_productos")
+let pedido = JSON.parse(localStorage.getItem("pedido")) || []
+
+function visualizacionProductos(arrayProductos){
+    arrayProductos.forEach(producto => {
+        const card = document.createElement('div')
+        card.classList.add('card-producto')
+        card.innerHTML = `<img src="${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
+                          <h3 class='nombreproductos'>${producto.nombre}</h3>
+                          <h2>${producto.precio}</h2>
+                          <p class="descripcion">${producto.descripcion}</p>
+                          <button class="productoAgregar" id="${producto.id}">Agregar</button>
+                          `
+        seccion_productos.appendChild(card)
+    })
+    añadircardboton()
 }
 
-function eliminarProducto(nombre) {
-    const index = pedido.findIndex(p => p.nombre.toLowerCase() === nombre.toLowerCase())
-    if (index !== -1) {
-        const productoEliminado = pedido.splice(index, 1)[0]
-        totalPagar -= productoEliminado.precio
-        return true
-    }
-    return false
-}
-
-function manejarConfirmacion(pedido, total) {
-    if (pedido.length > 0) {
-        let confirmacion = confirm(
-            "Tu pedido es: " + pedido.map(p => p.nombre).join(", ") + "\n" +
-            "El total a pagar es: $" + total + "\n" +
-            "¿Deseas confirmar tu compra?"
-        )
-        if (confirmacion) {
-            alert("Gracias por tu compra. Tu pedido está en camino.")
-            console.log("Pedido finalizado con éxito.")
-        } else {
-            alert("Compra cancelada. Esperamos verte pronto")
-            console.log("Compra cancelada.")
+function añadircardboton() {
+    addButton = document.querySelectorAll(".productoAgregar")
+    addButton.forEach(button => {
+        button.onclick = (event) => {
+            const productId = event.currentTarget.id     
+            const productoExistente = pedido.some(p => p.id === parseInt(productId));
+            if (productoExistente) {
+                const selectedProduct = pedido.find(producto => producto.id == parseInt(productId))
+                selectedProduct.cantidad = (selectedProduct.cantidad || 1) + 1
+            } else {
+                const selectedProduct = menu.find(producto => producto.id == parseInt(productId))
+                selectedProduct.cantidad = 1
+                pedido.push(selectedProduct)
+            }
+            actualizarContadorCarrito()
+            localStorage.setItem("pedido", JSON.stringify(pedido));
         }
-    } else {
-        alert("No se realizó ningún pedido. ¡Hasta la próxima!")
-    }
+    })
 }
 
-function mostrarPedidoActual(pedido, total) {
-    if (pedido.length > 0) {
-        alert("Tu pedido es: " + pedido.map(p => p.nombre).join(", ") + "\n" +
-            "El total a pagar es: $" + total + "\n")
-    } else {
-        alert("No se realizó ningún pedido hasta el momento")
-    }
+function actualizarContadorCarrito() {
+    const totalProductosCarritos = pedido.length
+    const contadorelementos = document.getElementById("contador-carrito")
+    contadorelementos.innerText = totalProductosCarritos
 }
 
-function eliminar(){
-    if (pedido.length > 0) {
-        const productoAeliminar = prompt("¿Qué producto deseas eliminar? " + "( " + pedido.map(p => p.nombre).join(", ") + " ) ")
-        let validacion_eliminar = eliminarProducto(productoAeliminar)
-        if (validacion_eliminar) {
-            alert("Has eliminado " + productoAeliminar + ". Total actual: $" + totalPagar)
-            console.log("Producto eliminado: " + productoAeliminar)
-        } else {
-            alert(productoAeliminar + " no se encontró en tu pedido.")
-        }
-    } else {
-        alert("No hay ningún producto en el pedido hasta el momento")
-    }
-}
-
-function agregar(opcion) {
-    const producto = menu.find(p => p.id === opcion)
-    if (producto){
-        agregarProducto(producto)
-    } else {
-        alert("Opción no válida. Por favor, elige un número del menú.")
-    }
-}
-
-function mostrarMenu(){
-    let menuTexto = "Bienvenido a " + nombre_restaurante + "\n\nMenú del Día:\n"
-    for(let producto of menu){
-        menuTexto += producto.id + ". " + producto.nombre + " ( $" + producto.precio+ " )\n"
-    }
-    menuTexto += "\nEscribe un número del menú o " + "\n" +
-        "'eliminar' para quitar un producto " + "\n" +
-        "'pedido' para ver tu pedido" + "\n" +
-        "'salir' para terminar: "
-    return menuTexto
-}
-// ----- --------------------------- Codigo principal ---------------------------- //
-let continuar = true
-do {
-    const panelMenu = mostrarMenu()
-    let eleccion = prompt(panelMenu)
-    switch (eleccion.toLowerCase()) {
-        case "salir":
-            continuar = false
-            break
-        case "eliminar":
-            eliminar()
-            break
-        case "pedido":
-            mostrarPedidoActual(pedido, totalPagar)
-            break
-        default:
-            let opcion = parseInt(eleccion)
-            agregar(opcion)
-            break
-    }
-} while (continuar)
-
-manejarConfirmacion(pedido, totalPagar)
+visualizacionProductos(menu)
+actualizarContadorCarrito();
