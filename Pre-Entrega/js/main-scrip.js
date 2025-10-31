@@ -1,63 +1,7 @@
 // CONSTANTES
 const nombre_restaurante = "El canton de Tijuana"
 const URL = '../db/data.json'
-/*  
-class producto{
-    static id = 0
-    constructor (nombre, precio, descripcion, imagen, cantidad){
-        this.id = ++producto.id
-        this.nombre = nombre
-        this.precio = precio
-        this.descripcion = descripcion
-        this.imagen = imagen
-        this.cantidad = cantidad
-    }
-}
-const menu = [
-    new producto (
-        "tacos", 
-        20000, 
-        "Cuatro tortillas de maíz rellenas de frijol refrito y cubiertas con ingredientes frescos.",
-        "../imagenes/tacos.jpg",
-        0
-        ),
-    new producto (
-        "quesadillas", 
-        18000,
-        "Tortillas de maíz o harina dobladas y rellenas con abundante queso fundido.",
-        "../imagenes/quesadillas.jpg",
-        0
-        ),
-    new producto (
-        "burritos", 
-        20000,
-        "Gran tortilla de harina rellena con una combinación de arroz, frijoles y carne.",
-        "../imagenes/burritos.jpg" ,
-        0
-        ),
-    new producto (
-        "enchiladas", 
-        25000,
-        "Tortillas de maíz bañadas en una salsa de chile (roja o verde), rellenas de pollo o queso, " + 
-        "y horneadas. Se sirven con crema, queso rallado y cebolla.",
-        "../imagenes/enchiladas.jpg",
-        0,
-    new producto (
-        "nachos", 
-        10000, 
-        "Bandeja de Nachos con dos salsas al gusto.",
-        "../imagenes/tacos.jpg",
-        0
-        ),
-    new producto (
-        "helado", 
-        8000, 
-        "Copa de helado con una salsa de su gusto",
-        "../imagenes/tacos.jpg",
-        0
-        ),
-        ) 
-]*/
+
 
 // FUNCIONES SWEET ALERT
 function productoAgregado() {
@@ -117,14 +61,6 @@ function actualizarContadorCarrito() {
     const totalProductosCarritos = pedido.length
     const contadorelementos = document.getElementById("contador-carrito")
     contadorelementos.innerText = totalProductosCarritos
-    Toastify({
-        text: 'Carrito anctualizado',
-        duration: 1500,
-        gravity: 'bottom',
-        position: 'right',
-        backgroundColor: 'green'
-
-    }).showToast()
 }
 
 function obtenerProductos(){
