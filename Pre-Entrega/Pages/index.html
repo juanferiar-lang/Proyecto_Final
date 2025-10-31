@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante El canton de Tijuana</title>
     <!--CSS-->
-    <link rel="stylesheet" href="/Pre-Entrega/CSS/Styles.css">
-    <script defer src="/Pre-Entrega/js/main-scrip.js"></script>
-
-    <link rel="stylesheet" href="/Pre-Entrega/imagenes/tacos.jpg">
+    <link rel="stylesheet" href="../CSS/Styles.css">
+    <!--Toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- JS -->
+    <script defer src="../js/main-scrip.js"></script>
     
 </head>
 <body>
     <h1>El canton de Tijuana</h1>
     <section id="seccion_productos">
+
     </section>
-    <div id="contador-carrito-container">  
-        <span id="contador-carrito">0</span> items en carrito
-    </div>
-    <h2><a href="./pedido.html">Hacer pedido</a></h2>
+
+    <a href="../Pages/pedido.html" id="contador-carrito-link">
+        <div id="contador-carrito-container">  
+            <span id="contador-carrito">0</span> items en carrito
+        </div>
+    </a>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html> 
+

@@ -1,0 +1,163 @@
+[
+    {
+        "id" : 1,
+        "nombre": "Tacos de birria", 
+        "precio": 31500, 
+        "descripcion": "Cuatro tortillas de maíz rellenas de frijol refrito y cubiertas con ingredientes frescos.",
+        "imagen": "../imagenes/tacos.jpg",
+        "cantidad": 0
+    },
+    {
+        "id" : 2,
+        "nombre": "Burrito",  
+        "precio": 24900, 
+        "descripcion": "Gran tortilla de harina rellena con una combinación de arroz, frijoles y carne.",
+        "imagen": "../imagenes/burritos.jpg" ,
+        "cantidad": 0
+    },
+    {
+        "id" : 3,
+        "nombre": "Quesadillas",  
+        "precio": 18000,  
+        "descripcion": "Tortillas de maíz o harina dobladas y rellenas con abundante queso fundido.", 
+        "imagen": "../imagenes/quesadillas.jpg", 
+        "cantidad": 0 
+    },
+    {
+        "id" : 4,
+        "nombre":"Enchiladas",
+        "precio": 21900,
+        "descripcion": "Tortillas de maíz bañadas en una salsa de chile (roja o verde), rellenas de pollo o queso, y horneadas. Se sirven con crema, queso rallado y cebolla.",
+        "imagen": "../imagenes/enchiladas.jpg",
+        "cantidad": 0
+    },
+    {
+        "id" : 5,
+        "nombre": "Nachos",  
+        "precio":  10000,  
+        "descripcion": "Bandeja de Nachos con dos salsas al gusto.",
+        "imagen": "../imagenes/nachos.jpg",
+        "cantidad": 0
+    },
+    {
+        "id" : 6,
+        "nombre": "Helado", 
+        "precio": 8000,  
+        "descripcion": "Copa de helado con una salsa de su gusto", 
+        "imagen": "../imagenes/helado.jpg",
+        "cantidad": 0 
+    },
+    {
+        "id" : 7,
+        "nombre": "Plato de flautas", 
+        "precio": 27900,  
+        "descripcion": "3 tacos dorados que puedes combinar a gusto con: pollo, res o vegetariano", 
+        "imagen": "../imagenes/plato-flautas.png",
+        "cantidad": 0 
+    },
+    {
+        "id" : 8,
+        "nombre": "Burro Tijuana", 
+        "precio": 27900,  
+        "descripcion": "2 tortillas de trigo rellenas de frijol mas dos proteinas a tu gusto", 
+        "imagen": "../imagenes/burro-tijuana.png",
+        "cantidad": 0 
+    },
+    {
+        "id" : 9,
+        "nombre": "Tostadas de Camaron", 
+        "precio": 36900,  
+        "descripcion": "3 tostadas de maiz con camaron adobados achiote y chile", 
+        "imagen": "../imagenes/tostadas-camaron.jpg",
+        "cantidad": 0 
+    },
+    {
+        "id" : 10,
+        "nombre": "Caldo Tijuana", 
+        "precio": 15900,  
+        "descripcion": "Caldillo de pollo con pollo desmechado, trozos tomate, aguacate, garbanzo y chile chipotle", 
+        "imagen": "../imagenes/caldo-tijuana.jpg",
+        "cantidad": 0 
+    },
+    {
+        "id" : 11,
+        "nombre": "Sopa Azteca", 
+        "precio": 15900,  
+        "descripcion": "Caldillo de pollo, pasta de tomate natural, con pollo desmechado y crema de leche", 
+        "imagen": "../imagenes/sopa-azteca.png",
+        "cantidad": 0 
+    },
+    {
+        "id" : 12,
+        "nombre": "Costillitas en chipotle", 
+        "precio": 36900,  
+        "descripcion": "Jugosas costillas de cerdo con una deliciosa salsa de chile chipotle con arroz mexicano y ensalada", 
+        "imagen": "../imagenes/costillas-chipotle.jpg",
+        "cantidad": 0 
+    },
+    {
+        "id" : 13,
+        "nombre": "Pozole rojo de Jalisco", 
+        "precio": 25500,  
+        "descripcion": "Caldillo de pollo adobado con chile guajillo con carne de cerdo desmechada", 
+        "imagen": "../imagenes/pozole-jalisco.png",
+        "cantidad": 0 
+    },
+    {
+        "id" : 14,
+        "nombre": "Chilaquiles", 
+        "precio": 23900,  
+        "descripcion": "Totopos cubiertos con pollo desmechado o carne de res, salsa roja o verde,", 
+        "imagen": "../imagenes/chilaquiles.jpg",
+        "cantidad": 0 
+    },
+    {
+        "id" : 15,
+        "nombre": "Lomo Ranchero", 
+        "precio": 39900,  
+        "descripcion": "Filete de lomo de res a la plancha adobado con chiles. Acompallado de una quesadillas y pico de gallo", 
+        "imagen": "../imagenes/lomo-ranchero.png",
+        "cantidad": 0 
+    },
+    {
+        "id" : 16,
+        "nombre": "Arrachera", 
+        "precio": 38900,  
+        "descripcion": "350gr de corte de res del diafragma, marinada con aspecias y sal parrillera", 
+        "imagen": "../imagenes/arrachera.png",
+        "cantidad": 0 
+    },
+    {
+        "id" : 17,
+        "nombre": "Alambres de res", 
+        "precio": 31900,  
+        "descripcion": "Trocitos de res asados a la plancha. Acompañado de guacamole, frijol refrito y 4 totillas", 
+        "imagen": "../imagenes/alambres-res.jpg",
+        "cantidad": 0 
+    },
+    {
+        "id" : 18,
+        "nombre": "Alambres de pollo", 
+        "precio": 31900,  
+        "descripcion": "Trocitos de pollo dorados a la plancha. Acompañado de guacamole, frijol refrito y 4 totillas", 
+        "imagen": "../imagenes/alambres-pollo.png",
+        "cantidad": 0 
+    },
+    {
+        "id" : 19,
+        "nombre": "Carne al pastor", 
+        "precio": 31900,  
+        "descripcion": "Trocitos de cerdo marinados en achiote y chile aguajillo. Acompañado de guacamole, frijol refrito y 4 totillas", 
+        "imagen": "../imagenes/carne-pastor.jpg",
+        "cantidad": 0 
+    },
+    {
+        "id" : 20,
+        "nombre": "Carnitas", 
+        "precio": 31900,  
+        "descripcion": "Trocitos de cerdo cocinado con especias y luego salteado. acompañado de guacamole, frijol refrito y 4 totillas", 
+        "imagen": "../imagenes/carnitas.jpg",
+        "cantidad": 0 
+    }
+
+]

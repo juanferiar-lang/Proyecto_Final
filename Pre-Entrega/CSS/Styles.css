@@ -1,13 +1,48 @@
+/* Mejoras generales para el body y título */
+body {
+    font-family: 'Arial', sans-serif; /* O usa Google Fonts si quieres algo más fancy, como 'Roboto' o 'Montserrat' */
+    background: linear-gradient(135deg, #f5f5f5 0%, #f6a613 100%); /* Gradiente suave para fondo */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: blue; /* Rojo mexicano */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 20px 0;
+    animation: fadeIn 1s ease-in-out; /* Animación de entrada */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#seccion_productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
 .card-producto {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
-    width: 300px;
+    border: none; /* Quita borde plano */
+    border-radius: 15px; /* Bordes más redondeados */
+    padding: 20px;
+    margin: 10px;
+    width: 320px;
     display: inline-block;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Sombra más pronunciada */
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%); /* Gradiente sutil en la tarjeta */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    overflow: hidden; /* Para animaciones */
 }
+
+    
 
 .card-producto-carrito {
     border: 1px solid #ccc;
@@ -34,9 +69,11 @@
 .imagen-producto {
     width: 100%;
     height: 200px;
-    object-fit: cover;  
-    border-radius: 4px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
+
 
 .imagen-producto-carrito {
     width: 100%;
@@ -53,6 +90,7 @@
     color: #333;
     font-size: 25px;  
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .descripcion {
@@ -170,7 +208,23 @@
     color: #333;
 }
 
+#contador-carrito-link {
+    /* Mantiene la posición fija y el estilo visual del div */
+    position: fixed; 
+    top: 10px; 
+    right: 10px;
+    /* Elimina el subrayado por defecto */
+    text-decoration: none;
+    /* Asegura que el enlace se comporte como el contenedor original */
+    display: inline-block; 
+    z-index: 1000;
+    cursor: pointer; /* Indica que es clickeable */
+}
 
+#contador-carrito-link:hover #contador-carrito-container {
+    background: #f0f0f0; /* Un color más claro al pasar el ratón */
+    border-color: #aaa;
+}
 .carrito-container {
     display: flex;
     flex-direction: column;  
@@ -219,4 +273,27 @@
     margin: 0;
     flex: 1;
     text-align: right;  
+}
+
+.compra-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.btn-comprar {
+    background: linear-gradient(45deg, #e17055, #d63031); /* Gradiente rojo */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-comprar:hover {
+    background: linear-gradient(45deg, #d63031, #e17055);
+    transform: scale(1.05);
 }
